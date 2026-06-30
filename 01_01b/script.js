@@ -38,7 +38,12 @@ const Card = (data) => {
           </p>
           <p>
             Uploaded on
-            <time class="image_date" datetime="${imgData.created_at}">${date.toLocaleString("en-US")}</time>
+            <time class="image_date" datetime="${imgData.created_at}">${date.toLocaleString("default", 
+              {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}</time>
           </p>
           <p>
             <a href="${imgData.links.self}" class="image__link">
