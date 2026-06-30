@@ -8,6 +8,24 @@ import data from "./data.js";
 
 const mainContent = document.querySelector(".main-content");
 
+const buildImage = (imgData) => {
+  const img = `
+    <img
+      srcset="
+          ${imgData.urls.full} ${imgData.width}w,
+          ${imgData.urls.regular} 1080w,
+          ${imgData.urls.small} 400w
+        "
+      sizes="(max-width: 450px) 400px, (max-width: 800) 1080px"
+      src="${imgData.urls.regular}"
+      width="${imgData.width}"
+      height="${imgData.height}"
+      alt="${imgData.description}"
+      loading="lazy"
+    />`;
+  return img;
+};
+
 const getDate = (imgData) => {
   const date = new Date(imgData.created_at);
   const niceDate = date.toLocaleString("default", {
@@ -23,19 +41,7 @@ const Card = (data) => {
 
   const markup = `
     <figure class="image">
-      <img
-        srcset="
-          ${imgData.urls.full} ${imgData.width}w,
-          ${imgData.urls.regular} 1080w,
-          ${imgData.urls.small} 400w
-        "
-        sizes="(max-width: 450px) 400px, (max-width: 800) 1080px"
-        src="${imgData.urls.regular}"
-        width="${imgData.width}"
-        height="${imgData.height}"
-        alt="${imgData.description}"
-        loading="lazy"
-      />
+      ${buildImage(imgData)}
       <figcaption class="image__caption">
         <h3 class="image__title">${imgData.description}</h3>
         <div class="image__meta">
