@@ -34,6 +34,7 @@ const displayModeOnLoad = () => {
     window.matchMedia("(prefers-color-scheme: dark)").matches
   ) {
     docElement.classList.add("dark");
+    toggle.setAttribute("aria-pressed", "true");
   }
 };
 displayModeOnLoad();
