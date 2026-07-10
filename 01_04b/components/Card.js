@@ -44,7 +44,12 @@ const getDate = (imgData) => {
 
 const Card = (imgData) => {
   
-  const {description, user: {name}, created_at: createdDate, links {self}} = imgData
+  const {
+    description,
+    user: { name },
+    created_at: createdDate,
+    links: { self },
+  } = imgData;
   return `
     <figure class="image">
       ${buildImage(imgData)}
