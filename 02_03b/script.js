@@ -28,6 +28,16 @@ mainContent.innerHTML = Cardlist(newData);
 const toggle = document.querySelector(".toggle");
 const docElement = document.documentElement;
 
+const displayModeOnLoad = () => {
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    docElement.classList.add("dark");
+  }
+};
+displayModeOnLoad();
+
 // Trigger mode change with toggle.
 const toggleDisplayMode = () => {
   if (toggle.getAttribute("aria-pressed") === "true") {
