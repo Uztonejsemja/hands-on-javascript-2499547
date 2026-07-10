@@ -63,6 +63,7 @@ const Card = (imgData) => {
               View it on Unsplash.
             </a>
           </p>
+          <p>License: <a href="#">License Name</a></p>
         </div>
       </figcaption>
     </figure>
