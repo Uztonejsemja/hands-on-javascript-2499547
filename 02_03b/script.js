@@ -35,6 +35,9 @@ const displayModeOnLoad = () => {
   ) {
     docElement.classList.add("dark");
     toggle.setAttribute("aria-pressed", "true");
+  } else {
+    docElement.classList.add("light");
+    toggle.removeAttribute("aria-pressed");
   }
 };
 displayModeOnLoad();
