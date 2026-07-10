@@ -4,23 +4,28 @@
  * - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
  */
 
-const buildImage = (imgData) => {
-  let srcset = `${imgData.urls.full} ${imgData.width}w`;
-  if (imgData.urls.regular) {
-    srcset = srcset + `, ${imgData.urls.regular} 1080w`;
+const buildImage = ({
+  urls: {full, regular, small}, 
+  width, 
+  height, 
+  description
+}) => {
+  let srcset = `${full} ${width}w`;
+  if (regular) {
+    srcset = srcset + `, ${regular} 1080w`;
   }
-  if (imgData.urls.small) {
-    srcset = srcset + `, ${imgData.urls.small} 400w`;
+  if (small) {
+    srcset = srcset + `, ${small} 400w`;
   }
 
   const img = `
     <img
           srcset="${srcset}"
           sizes="(max-width: 450px) 400px, (max-width: 800) 1080px"
-          src="${imgData.urls.regular}"
-          width="${imgData.width}"
-          height="${imgData.height}"
-          alt="${imgData.description}"
+          src="${regular}"
+          width="${width}"
+          height="${height}"
+          alt="${description}"
           loading="lazy"
         />
     `;
