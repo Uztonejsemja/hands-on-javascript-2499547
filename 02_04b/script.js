@@ -30,6 +30,14 @@ const toggle = document.querySelector(".toggle");
 // Detect mode on load and set toggle state accordingly.
 const displayModeOnLoad = () => {
   console.log(localStorage.getItem("darkMode"));
+
+  let dark = false;
+  dark = !!(
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme:dark)").matches
+  );
+  dark = localStorage.getItem("darkMode") === "enabled"
+
   if (
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches
