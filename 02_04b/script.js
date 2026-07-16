@@ -29,15 +29,18 @@ const toggle = document.querySelector(".toggle");
 
 // Detect mode on load and set toggle state accordingly.
 const displayModeOnLoad = () => {
+  console.log(localStorage.getItem("darkMode"));
   if (
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches
   ) {
     docElement.classList.add("dark");
     toggle.setAttribute("aria-pressed", "true");
+    localStorage.setItem("darkMode", "enabled")
   } else {
     docElement.classList.add("light");
     toggle.removeAttribute("aria-pressed");
+    localStorage.setItem("darkMode", "disabled");
   }
 };
 displayModeOnLoad();
@@ -46,10 +49,13 @@ displayModeOnLoad();
 const toggleDisplayMode = () => {
   if (toggle.getAttribute("aria-pressed") === "true") {
     toggle.removeAttribute("aria-pressed");
+    localStorage.setItem("darkMode", "disabled");
   } else {
     toggle.setAttribute("aria-pressed", "true");
+    localStorage.setItem("darkMode", "enabled");
   }
 
+  console.log(localStorage.getItem("darkMode"));
   docElement.classList.toggle("dark");
   docElement.classList.toggle("light");
 };
